@@ -1,0 +1,36 @@
+doc-central (1.4) unstable; urgency=low
+
+  * Don't byte-compile the scripts anymore
+  * Move CGI scripts into a doc-central subdirectory. Closes: Bug#104147
+  * Support BROWSER environment setting. Closes: Bug#107255
+  * Don't print debug output. Closes: Bug#108815
+  * Adapt for python 2. Closes: Bug#118520
+  * Clean up html, should all be proper html4 now
+
+ -- Wichert Akkerman <wakkerma@debian.org>  Tue, 13 Nov 2001 16:36:42 +0100
+
+doc-central (1.3) unstable; urgency=low
+
+  * doc-info.py/parse_info: handle missing headers
+
+ -- Wichert Akkerman <wakkerma@debian.org>  Mon,  8 May 2000 14:16:30 +0200
+
+doc-central (1.2) unstable; urgency=low
+
+  * Remove cgi/*.pyc in clean target
+  * Actually sort document properly
+
+ -- Wichert Akkerman <wakkerma@debian.org>  Fri, 28 Apr 2000 23:06:41 +0200
+
+doc-central (1.1) unstable; urgency=low
+
+  * Searching and html updates from Ruud de Rooij <ruud@ruud.org>
+  * Seperated searching code into dc-search.cgi and enhanced it
+
+ -- Wichert Akkerman <wakkerma@debian.org>  Sat, 22 Apr 2000 23:13:51 +0200
+
+doc-central (1.0) unstable; urgency=low
+
+  * Initial public release
+
+ -- Wichert Akkerman <wakkerma@debian.org>  Sun,  9 Apr 2000 17:53:03 -0400

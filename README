@@ -1,0 +1,33 @@
+Welcome to Doc-Central!
+
+Doc-Central is a collection of scripts that give you a convenient way
+to browse the documentation installed on your Debian system. 
+
+Quick start: run "doccentral" or point your webbrowser to
+http://localhost/dc/ .
+
+Doc-Central uses a local http server (like apache) to present a list of
+all registered documents. Depending on the type of document other tools
+are used to view the document: for info files we use info2www.  All
+other types are currently linked to directly. To get the list of installed
+documentation the doc-base registration entries as used. For more
+information on doc-base please install the doc-base package and read
+the documentation in /usr/doc/doc-base.
+
+Please note that by default other people can also view the documentation
+on your system. Some people consider this a security risk since it gives
+others an idea on what software you installed. If you don't want to
+allow others to view the documentation on your system you will need to
+configure your http server to restrict access.
+
+If you use a browser that is capable of handling forms you will see an
+index of documentation sections on the left side. By selecting a section
+you will be presented with a list of available documents in that
+section. Simply clicking on the title of a document will show the
+document for you. Some documents will be available in multiple formats;
+if so a list of formats will be given next to the title. Clicking on a
+format will show you the document in that format.
+
+Wichert Akkerman <wakkerma@debian.org>
+Sun Apr  9 19:07:25 EDT 2000
+

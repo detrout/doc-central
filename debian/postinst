@@ -1,0 +1,13 @@
+#! /bin/sh -e
+
+pkg=doc-central
+
+if [ ! "$1" = "configure" ]; then
+	exit 0
+fi
+
+# Do the FHS-documentation-symlink-trick
+if [ -d /usr/doc -a ! -e /usr/doc/$pkg -a -d /usr/share/doc/$pkg ] ; then
+	ln -s ../share/doc/$pkg /usr/doc/$pkg
+fi
+

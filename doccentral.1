@@ -1,0 +1,45 @@
+.TH DOCCENTRAL 1 "Debian tools" "DEBIAN"
+.SH NAME
+doccentral \- web\-based documentation browser
+.SH SYNOPSIS
+.B doccentral
+.SH DESCRIPTION
+.B Doc-Central
+is a simple tool to help you browse the documentation installed on your
+.B Debian
+system. It uses the
+.I doc-base
+registration entries for documentation to build a list of available documentation.
+You can view this list via any web browser.
+.PP
+The easier way to view the
+.B doc-central
+index is to use the
+.B doccentral
+tool, which will look for a webbrowser on your system and start that
+with the correct page. If for some reason
+.B doccentral
+can not find a browser, or you want to use another browse you can also
+use the following URL:
+.PP
+.RS
+.UR http://localhost/dc/
+http://localhost/dc/
+.UE
+.RE
+.SH ENVIRONMENT
+.TP
+BROWSER
+Override the normal browser selection from
+.B doccentral
+by specifying a specific browser.
+.SH AUTHOR
+Wichert Akkerman
+.UR mailto:wakkerma@debian.org
+<wakkerma@debian.org>
+.UE
+for the
+.UR http://www.debian.org/
+Debian
+.UE
+system.

@@ -1,0 +1,53 @@
+#! /usr/bin/make -f
+
+clean:
+	rm -rf debian/tmp
+	rm -f debian/files debian/substvars
+	rm -f cgi/*.pyc
+
+build:
+	
+binary: binary-arch binary-indep
+
+binary-arch:
+	@echo This package has no architecture-specific code
+
+binary-indep: clean
+	test 0 = "`id -u`"
+	install -d -o root -g root -m 755 debian/tmp/usr/lib/cgi-bin/doc-central
+	for i in cgi/*.py ; do \
+		install -p -o root -g root -m 644 $$i \
+			debian/tmp/usr/lib/cgi-bin/doc-central/ ; done
+
+	for i in cgi/*.cgi ; do \
+		install -p -o root -g root -m 755 $$i \
+			debian/tmp/usr/lib/cgi-bin/doc-central/ ; done
+
+	install -d -o root -g root -m 755 debian/tmp/usr/bin
+	install -p -o root -g root -m 755 doccentral debian/tmp/usr/bin/
+
+	install -d -o root -g root -m 755 debian/tmp/usr/share/man/man1
+	install -p -o root -g root -m 644 doccentral.1 \
+		debian/tmp/usr/share/man/man1/
+	gzip -9f debian/tmp/usr/share/man/man1/*
+
+	install -d -o root -g root -m 755 debian/tmp/var/www/dc
+	install -p -o root -g root -m 644 html/*.html debian/tmp/var/www/dc/
+
+	install -d -o root -g root -m 755 debian/tmp/usr/share/doc/doc-central
+	install -p -o root -g root -m 644 debian/changelog \
+		debian/tmp/usr/share/doc/doc-central/
+	gzip -9f debian/tmp/usr/share/doc/doc-central/*
+	install -p -o root -g root -m 644 README TODO \
+		debian/tmp/usr/share/doc/doc-central/
+	install -p -o root -g root -m 644 debian/copyright \
+		debian/tmp/usr/share/doc/doc-central/
+
+	install -d -o root -g root -m 755 debian/tmp/DEBIAN
+	install -p -o root -g root -m 755 debian/prerm debian/tmp/DEBIAN/
+	install -p -o root -g root -m 755 debian/postinst debian/tmp/DEBIAN/
+
+	dpkg-gencontrol -isp
+	dpkg --build debian/tmp ..
+
+.PHONY: clean build binary binary-arch binary-indep
