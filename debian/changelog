@@ -1,3 +1,12 @@
+doc-central (1.8.1) unstable; urgency=low
+
+  * The "Naming Releases is Fun" Release
+  * Removed call to printerror function, which was removed together
+    with cgiutils.py, and which cannot be implemented with the current
+    doc-central design (Closes: #296947)
+
+ -- Guilherme de S. Pastore <gpastore@colband.com.br>  Fri, 25 Feb 2005 23:04:58 -0300
+
 doc-central (1.8) unstable; urgency=high
 
   * Two names release:

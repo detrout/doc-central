@@ -23,9 +23,7 @@ def processdir(dir):
 					sections.append(newdoc.section)
 				documents.append(newdoc)
 	except OSError, err:
-		if err.errno != 2:
-			printerror("failed to open doc-base directory %s: %s", dir, err)
-
+		pass
 
 def processdirs(dirs=docconfig.docbasedirs):
 	'''Read all doc-base entries in a list of directories. If no list of
