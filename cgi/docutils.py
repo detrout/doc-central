@@ -17,10 +17,11 @@ def processdir(dir):
 
 	try:
 		for entry in os.listdir(dir):
-			newdoc=docinfo.DocumentationInfo(dir+"/"+entry)
-			if not newdoc.section in sections:
-				sections.append(newdoc.section)
-			documents.append(newdoc)
+			if os.path.isfile(dir+"/"+entry):
+				newdoc=docinfo.DocumentationInfo(dir+"/"+entry)
+				if not newdoc.section in sections:
+					sections.append(newdoc.section)
+				documents.append(newdoc)
 	except OSError, err:
 		if err.errno != 2:
 			printerror("failed to open doc-base directory %s: %s", dir, err)
@@ -98,7 +99,7 @@ def makedoclink(doc, format=None):
 
 	if not len(doc.docs):
 		return ''
-	if not format:	
+	if not format:
 		for frm in docconfig.FormatOrder:
 			if doc.docs.has_key(frm):
 				format=frm
@@ -107,11 +108,42 @@ def makedoclink(doc, format=None):
 		format=doc.docs.keys()[0]
 	
 	if format == "info":
-		m=re.match("/usr(/share)?/info/([^.]+)\.info", doc.docs[format])
-		return "/cgi-bin/info2www?(%s)" % m.group(2)
+		m = re.match("/usr(/share)?/info/(.+)\.info", doc.docs[format])
+
+		if m:
+			return "/cgi-bin/info2www?(%s)" % m.group(2)
+		else:
+			return None
 	else:
 		return re.sub("/usr(/share)?/doc/", "/doc/", doc.docs[format])
 
+def checkextralink(package, filename):
+	'''Check if documentation file "filename" exists and return a full
+	link to it. Only intended to be called by makeextralinks'''
+
+	docpath = '/usr/share/doc/'+package.lower()+'/'+filename
+
+	if os.path.isfile(docpath):
+		return '<A HREF="%s">%s</A>, ' % (docpath[10:], filename)
+	else:
+		return ''
+
+def makeextralinks(package):
+	'''Check for existance of changelog, README, NEWS (also .Debian
+	and gzipped equivalents) on /usr/share/doc/package through
+	checkextralink and return the links to all of them'''
+
+	buf = ""
+
+	files = ['changelog', 'NEWS', 'README']
+
+	for filename in files:
+		buf = buf + checkextralink(package, filename)
+		buf = buf + checkextralink(package, filename+'.gz')
+		buf = buf + checkextralink(package, filename+'.Debian')
+		buf = buf + checkextralink(package, filename+'.Debian.gz')
+
+	return buf[:-2]
 
 def makedoclinks(doc):
 	'''Build a HTML-string with a list of URLs too all available versions
@@ -158,6 +190,3 @@ def makesectionlink(sect):
 	browse.cgi'''
 
 	return scriptname("browse.cgi") + "?section=%s" % sect
-
-# vim: ts=8 sw=8 ft=python nowrap
-

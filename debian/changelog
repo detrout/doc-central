@@ -1,3 +1,93 @@
+doc-central (1.8) unstable; urgency=high
+
+  * Two names release:
+    - The "How Could I Be So Dumb?" Release
+    - The "Really Old Bugs Can Be Fixed" Release
+  * Set priority to optional (when was it set to extra?)
+  * Fixed processing of dirs in order not to show only one document
+    per section (higher urgency)
+  * Parsing doc-base files which don't provide a full path for the
+    index of documentation in info format no longer breaks makedoclink
+    (Closes: #62219)
+  * Removed cgiutils.py, which hasn't been used for some time now and
+    has been forgotten around (Closes: #294742)
+
+ -- Guilherme de S. Pastore <gpastore@colband.com.br>  Fri, 11 Feb 2005 14:57:25 -0200
+
+doc-central (1.7) unstable; urgency=low
+
+  * Made parsing of doc-base directory not fail if there's a
+    subdirectory under it. There should NEVER be one, but some
+    Debian-based distributions do it, and doc-central should not
+    break because of it (Closes: #290846)
+  * Fixed changelog (apache is definetely not a web browser, heh)
+
+ -- Guilherme de S. Pastore <gpastore@colband.com.br>  Fri, 21 Jan 2005 23:07:59 -0200
+
+doc-central (1.6) unstable; urgency=low
+
+  * Search now checks document name too (not only document title)
+  * The doccentral wrapper now accepts a document name as a parameter,
+    using viewdoc.cgi to put the left menu and search.cgi together to
+    display the available findings (Closes: #284687, #285013)
+  * Made the browsing of other files of the "see also" section (not only
+    README and README.Debian) easier. This includes, but is not limited to
+    changelogs, NEWS files and their gzipped versions
+  * Fixed a regular expression in docutils.py in order not to hide
+    documentation in info format with dots in the name. I can't really
+    see a reason for this (Closes: #182555)
+  * Make package name lowercase before looking for extra links, since
+    there are packages (such as imagemagick) which register AlTerNateCaSe
+    doc-base entries
+  * debian/control:
+    - Replaced Build-Depends with Build-Depends-Indep
+    - Added apache as alternative for virtual dependancy on httpd
+    - Added w3m as alternative for virtual recommendation on www-browser
+  * debian/rules:
+    - Now installs doccentral.1 (how could I forget that?)
+    - Removed 'for' loops: install handles wildcards just perfectly
+  * TODO:
+    - Absurdly outdated: removed
+
+ -- Guilherme de S. Pastore <gpastore@colband.com.br>  Mon,  3 Jan 2005 15:34:08 -0200
+
+doc-central (1.5) unstable; urgency=low
+
+  * New maintainer (Closes: #282198)
+  * Updated Standards-Version to 3.6.1.1
+  * Created a menu entry for doccentral (Closes: #110550)
+  * Added convenient way to access README and README.Debian if they are
+    present and if the package has a doc-base entry (Closes: #147567)
+  * doccentral:
+    - Removed all the browser detection stuff: sensible-browser handles
+      this in a far better way (Closes: #162523)
+    - Added support for the DC_HOST environment variable, used to
+      override Doc-Central's location (Closes: #269224)
+  * doccentral.1:
+    - General revision
+    - Fixed grammar and spelling mistakes
+    - Added reference to the DC_HOST environment variable
+  * README:
+    - Completely rewritten
+    - Replaced '/usr/doc' with '/usr/share/doc' (Closes: #137374)
+  * html/main.html:
+    - Rewrote some chunks, corrected some mistakes and typos
+    - Made a little more friendly :-)
+  * maintainer scripts:
+    - Dropped postinst, since it was only used to do the
+      /usr/doc -> /usr/share/doc symlink "trick", and that was only needed
+      until the release of Woody
+    - Left prerm there for the cleanups
+  * debian/rules:
+    - Moved to CDBS
+      + Added necessary build-dependencies to debian/control
+    - Moved build dir to debian/doc-central
+    - No need to remove *.pyc on clean, since we no longer byte-compile
+      the scripts
+  * Smaller cosmetic changes
+
+ -- Guilherme de S. Pastore <gpastore@colband.com.br>  Fri, 26 Nov 2004 18:10:38 -0200
+
 doc-central (1.4) unstable; urgency=low
 
   * Don't byte-compile the scripts anymore

@@ -58,5 +58,3 @@ print """
 </form>
 
 </body></html>""" % docutils.scriptname("search.cgi");
-
-# vim: ts=8 sw=8 nowrap

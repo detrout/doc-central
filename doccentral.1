@@ -3,6 +3,12 @@
 doccentral \- web\-based documentation browser
 .SH SYNOPSIS
 .B doccentral
+[\fIdocument-name\fR]
+.SH OPTIONS
+.PP
+The only option that can be passed to the doccentral wrapper is a document
+name (often the same as the name of the package which provides it) for
+direct access (automatic search for the given parameter).
 .SH DESCRIPTION
 .B Doc-Central
 is a simple tool to help you browse the documentation installed on your
@@ -12,14 +18,14 @@ system. It uses the
 registration entries for documentation to build a list of available documentation.
 You can view this list via any web browser.
 .PP
-The easier way to view the
+The easiest way to view the
 .B doc-central
 index is to use the
 .B doccentral
 tool, which will look for a webbrowser on your system and start that
-with the correct page. If for some reason
+with the correct page. If for any reason
 .B doccentral
-can not find a browser, or you want to use another browse you can also
+cannot find a suitable browser or you want to use another one, you can also
 use the following URL:
 .PP
 .RS
@@ -33,13 +39,18 @@ BROWSER
 Override the normal browser selection from
 .B doccentral
 by specifying a specific browser.
+.TP
+DC-HOST
+Override the location of
+.B Doc-Central
+(usually localhost)
 .SH AUTHOR
+Guilherme de S. Pastore
+.UR mailto:gpastore@colband.com.br
+<gpastore@colband.com.br>
+.UE
+.br
 Wichert Akkerman
 .UR mailto:wakkerma@debian.org
 <wakkerma@debian.org>
 .UE
-for the
-.UR http://www.debian.org/
-Debian
-.UE
-system.

@@ -39,7 +39,3 @@ SectionDescr		=  {
 	"help"			: "General documentation, FAQs and HOWTOs",
 	"text"			: "Document and text formats",
 	}
-
-
-# vim: ts=8 sw=8 ft=python nowrap
-

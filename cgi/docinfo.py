@@ -24,6 +24,7 @@ class DocumentationInfo:
 		self.abstract="Sorry, there is no abstract available."
 		self.docs={}
 		if docfile:
+			self.package=docfile.split('/')[-1]
 			self.parse_info(docfile)
 
 	def __getkey(self,key):
@@ -76,8 +77,3 @@ class DocumentationInfo:
 				self.docs[format]=part["Index"]
 			else:
 				self.docs[format]=part["Files"]
-
-
-
-# vim: ts=8 sw=8 ft=python nowrap
-

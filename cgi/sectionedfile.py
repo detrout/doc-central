@@ -76,5 +76,3 @@ class SectionedFile:
 		self.blocked=0
 		self.newblock=1
 		return 1
-
-# vim: ts=8 sw=8 ft=python nowrap

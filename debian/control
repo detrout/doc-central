@@ -1,13 +1,14 @@
 Source: doc-central
 Section: web
-Priority: extra
-Maintainer: Wichert Akkerman <wakkerma@debian.org>
-Standards-Version: 3.1.1
+Priority: optional
+Maintainer: Guilherme de S. Pastore <gpastore@colband.com.br>
+Standards-Version: 3.6.1.1
+Build-Depends-Indep: cdbs, debhelper (>= 4.1.0)
 
 Package: doc-central
 Architecture: all
-Depends: httpd, python (>= 2.1), info2www
-Recommends: www-browser
+Depends: apache | httpd, python (>= 2.1), info2www
+Recommends: w3m | www-browser
 Description: web-based documentation browser
  Doc-Central is a tool to browse the documentation installed on your
  system using their doc-base entries. 

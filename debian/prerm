@@ -1,13 +1,6 @@
-#! /bin/sh -e
+#!/bin/sh -e
 
-pkg=doc-central
-
-if [ ! \( "$1" = "upgrade" -o "$1" = "remove" \) ]; then
-	exit 0
-fi              
-
-# Do the FHS-documentation-symlink-trick
 if [ -L /usr/doc/$pkg ]; then
-	rm -f /usr/doc/$pkg
+    rm -f /usr/doc/$pkg
 fi
 

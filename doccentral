@@ -1,36 +1,15 @@
 #!/bin/bash
 
-# Test if we are using X windows and select the list of possible browsers
-# based on that.
-if [ "$DISPLAY" = "" ] ; then
-	pb=(w3m links lynx)
+hostname="$DC_HOST"
+
+if [ -z "$hostname" ]; then
+    hostname="`hostname -f`"
+fi
+
+if [ -n "$1" ]; then
+    exec sensible-browser http://$hostname/cgi-bin/doc-central/viewdoc.cgi?keyword=$1
 else
-	pb=(mozilla galeon netscape amaya chimera gzilla arena gnome-help-browser)
+    exec sensible-browser http://$hostname/dc/
 fi
 
-# Look for the first browser that is installed on the system
-idx=0
-browser="$BROWSER"
-while [ -z "$browser" -a $idx -lt ${#pb[*]} ] ; do
-	command -v ${pb[$idx]} > /dev/null 2>&1 && browser=${pb[$idx]}
-	idx=$(($idx + 1 ))
-done
-
-# If we did not find a browser give an error and tell the users how to
-# access doc-central manually.
-if [ -z "$browser" ] ; then
-	cat <<EOF
-Sorry, but I can't find a webbrowser. If you do have a webbrowser installed
-please start it and go to the following URL:
-
-	http://`hostname -f`/dc/
-
-That will show your the Doc-Central starting page.
-
-EOF
-	exit 1
-fi
-
-# Looks like we are all set, so fire up the browser.
-exec $browser http://`hostname -f`/dc/
 

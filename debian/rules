@@ -1,53 +1,14 @@
-#! /usr/bin/make -f
+#!/usr/bin/make -f
+# -*- mode: makefile; coding: utf-8 -*-
 
-clean:
-	rm -rf debian/tmp
-	rm -f debian/files debian/substvars
-	rm -f cgi/*.pyc
+include /usr/share/cdbs/1/rules/buildcore.mk
+include /usr/share/cdbs/1/rules/debhelper.mk
 
-build:
-	
-binary: binary-arch binary-indep
+DEB_INSTALL_MANPAGES_doc-central := doccentral.1
 
-binary-arch:
-	@echo This package has no architecture-specific code
+binary-post-install/doc-central::
+	install -p -o root -g root -m 644 cgi/*.py debian/doc-central/usr/lib/cgi-bin/doc-central/
+	install -p -o root -g root -m 755 cgi/*.cgi debian/doc-central/usr/lib/cgi-bin/doc-central/
 
-binary-indep: clean
-	test 0 = "`id -u`"
-	install -d -o root -g root -m 755 debian/tmp/usr/lib/cgi-bin/doc-central
-	for i in cgi/*.py ; do \
-		install -p -o root -g root -m 644 $$i \
-			debian/tmp/usr/lib/cgi-bin/doc-central/ ; done
-
-	for i in cgi/*.cgi ; do \
-		install -p -o root -g root -m 755 $$i \
-			debian/tmp/usr/lib/cgi-bin/doc-central/ ; done
-
-	install -d -o root -g root -m 755 debian/tmp/usr/bin
-	install -p -o root -g root -m 755 doccentral debian/tmp/usr/bin/
-
-	install -d -o root -g root -m 755 debian/tmp/usr/share/man/man1
-	install -p -o root -g root -m 644 doccentral.1 \
-		debian/tmp/usr/share/man/man1/
-	gzip -9f debian/tmp/usr/share/man/man1/*
-
-	install -d -o root -g root -m 755 debian/tmp/var/www/dc
-	install -p -o root -g root -m 644 html/*.html debian/tmp/var/www/dc/
-
-	install -d -o root -g root -m 755 debian/tmp/usr/share/doc/doc-central
-	install -p -o root -g root -m 644 debian/changelog \
-		debian/tmp/usr/share/doc/doc-central/
-	gzip -9f debian/tmp/usr/share/doc/doc-central/*
-	install -p -o root -g root -m 644 README TODO \
-		debian/tmp/usr/share/doc/doc-central/
-	install -p -o root -g root -m 644 debian/copyright \
-		debian/tmp/usr/share/doc/doc-central/
-
-	install -d -o root -g root -m 755 debian/tmp/DEBIAN
-	install -p -o root -g root -m 755 debian/prerm debian/tmp/DEBIAN/
-	install -p -o root -g root -m 755 debian/postinst debian/tmp/DEBIAN/
-
-	dpkg-gencontrol -isp
-	dpkg --build debian/tmp ..
-
-.PHONY: clean build binary binary-arch binary-indep
+	install -p -o root -g root -m 755 doccentral debian/doc-central/usr/bin
+	install -p -o root -g root -m 644 html/*.html debian/doc-central/var/www/dc

@@ -50,6 +50,8 @@ for doc in docutils.documents:
 			print '<tr><th bgcolor="#eeeeff" align=right valign=top><strong>formats:</strong></th><td bgcolor="#ffffff">%s&nbsp;<br></td></tr>' % links
 		print '<tr><th bgcolor="#eeeeff" align="right" valign="top"><strong>author:</strong></th><td bgcolor="#ffffff">%s&nbsp;<br></td></tr>' % doc.author
 		print '<tr><th bgcolor="#eeeeff" align="right" valign="top"><strong>abstract:</strong></th><td bgcolor="#ffffff">%s&nbsp;<br></td></tr>' % doc.abstract
+		if docutils.makeextralinks(doc.package):
+			print '<tr><th bgcolor="#eeeeff" align="right" valign="top"><strong>see also:</strong></th><td bgcolor="#ffffff">%s&nbsp;<br></td></tr>' % docutils.makeextralinks(doc.package)
 		print '</table><p>'
 		print '</td></tr>'
 
@@ -57,5 +59,3 @@ print '''</table>
 </td></tr></table>
 </body></html>
 '''
-
-# vim: ts=8 sw=8 nowrap

@@ -1,33 +1,36 @@
 Welcome to Doc-Central!
 
-Doc-Central is a collection of scripts that give you a convenient way
-to browse the documentation installed on your Debian system. 
+Doc-Central is a set of scripts working together in order to provide you
+with convenient ways to browse the documentation available on your Debian
+system.
 
-Quick start: run "doccentral" or point your webbrowser to
-http://localhost/dc/ .
+For a quick start, you can just run "doccentral" or point your favourite
+web-browser to http://localhost/dc/ .
 
-Doc-Central uses a local http server (like apache) to present a list of
-all registered documents. Depending on the type of document other tools
-are used to view the document: for info files we use info2www.  All
-other types are currently linked to directly. To get the list of installed
-documentation the doc-base registration entries as used. For more
-information on doc-base please install the doc-base package and read
-the documentation in /usr/doc/doc-base.
+Doc-Central uses basically a local HTTP server (e.g. apache) to present
+the list of registered documents, although it might eventually use other
+tools depending on the format of the document: as an example, info2www is
+used for info files. Currently, all other types are linked to directly.
 
-Please note that by default other people can also view the documentation
-on your system. Some people consider this a security risk since it gives
-others an idea on what software you installed. If you don't want to
-allow others to view the documentation on your system you will need to
-configure your http server to restrict access.
+In order to get the list of available documentation, Doc-Central uses the
+doc-base registry. For more information on doc-base, please install the
+'doc-base' package and check the documentation located on
+/usr/share/doc/doc-base .
 
-If you use a browser that is capable of handling forms you will see an
-index of documentation sections on the left side. By selecting a section
-you will be presented with a list of available documents in that
-section. Simply clicking on the title of a document will show the
-document for you. Some documents will be available in multiple formats;
-if so a list of formats will be given next to the title. Clicking on a
-format will show you the document in that format.
+Please note that, by default, other people can also view the documentation
+on your system. It might be considered a security risk, since it gives
+others a slight idea about what software is running on your machine. To
+restrict this kind of external excess, your web-server will need to be
+configured accordinly.
 
-Wichert Akkerman <wakkerma@debian.org>
-Sun Apr  9 19:07:25 EDT 2000
+If you use a browser capable of handling forms, you will see a
+documentation sections index on the left side. By selecting one of the
+sections, you will be presented with a list of the documents it contains.
+Simply clicking on the title of a document will show it to you. Also,
+some of them will be available in multiple formats. If so, a list of
+formats will be given next to the title. Clicking on a format will show
+you the document in that format.
 
+--
+Guilherme de S. Pastore <gpastore@colband.com.br>
+Fri, 26 Nov 2004 23:46:19 -0200
