@@ -103,7 +103,7 @@ def makedoclink(doc, format=None):
 				format=frm
 				break
 	if not format:
-		format=doc.docs.keys()[0]
+		format = doc.docs.keys()[0]
 	
 	if format == "info":
 		m = re.match("/usr(/share)?/info/(.+)\.info", doc.docs[format])
@@ -113,13 +113,13 @@ def makedoclink(doc, format=None):
 		else:
 			return None
 	else:
-		return re.sub("/usr(/share)?/doc/", "/doc/", doc.docs[format])
+		return doc.docs[format].replace ('/usr/share/doc/', '/doc/')
 
 def checkextralink(package, filename):
 	'''Check if documentation file "filename" exists and return a full
 	link to it. Only intended to be called by makeextralinks'''
 
-	docpath = '/usr/share/doc/'+package.lower()+'/'+filename
+	docpath = '/usr/share/doc/' + package.lower() + '/' + filename
 
 	if os.path.isfile(docpath):
 		return '<A HREF="%s">%s</A>, ' % (docpath[10:], filename)

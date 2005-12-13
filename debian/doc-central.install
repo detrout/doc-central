@@ -1,0 +1,3 @@
+doccentral usr/bin
+html/*.html var/www/dc
+cgi/*.{cgi,py} usr/lib/cgi-bin/doc-central

@@ -1,3 +1,33 @@
+doc-central (1.8.2) unstable; urgency=low
+
+  * The "How can people still use that?" Release
+  * Drop support for /usr/doc and /usr/info, so we can remove some
+    broken regular expressions that prevented some docs from being
+    viewed, and as it's high time we did that, anyway
+
+  * doccentral.1:
+    - updated maintainer e-mail address
+    - fixed typo in environment variable name
+
+  * README:
+    - updated maintainer e-mail address
+
+  * debian/control:
+    - updated maintainer e-mail address
+    - bumped standards-version to 3.6.2.1
+    - dropped versioned dependency on python
+
+  * debian/copyright:
+    - updated
+
+  * debian/doc-central.{install,manpages}:
+    - created; moved things from debian/rules
+
+  * debian/rules:
+    - cleaned up
+
+ -- Guilherme de S. Pastore <guilherme.pastore@terra.com.br>  Mon, 12 Dec 2005 23:04:20 -0200
+  
 doc-central (1.8.1) unstable; urgency=low
 
   * The "Naming Releases is Fun" Release
