@@ -3,7 +3,7 @@
 # about a single document.
 
 # Import all system packages we need
-import sys, os, rfc822, string
+import sys, os, rfc822, string, re
 # Import all our own packages
 import sectionedfile
 
@@ -12,6 +12,10 @@ SORT_TITLE	= 1
 SORT_SECTION	= 2
 # Default sorting order
 SortMethod	= [ SORT_TITLE ]
+
+pat_paragraph	= re.compile('^ \.\n', re.MULTILINE)
+pat_verbatim	= re.compile('((^  +[^ ].*\n)+)', re.MULTILINE)
+pat_url		= re.compile('((http|ftp)s?://[a-zA-Z0-9-]+\.[a-zA-Z0-9-./]+)')
 
 class DocumentationInfo:
 	def __init__(self,docfile=None):
@@ -48,6 +52,23 @@ class DocumentationInfo:
 			elif (a>b):
 				return 1
 		return 0
+
+	def _html_encode(self, text):
+		'''HTML encodes text '''
+		text=string.replace(text, '&', '&amp;')
+		text=string.replace(text, '<', '&lt;')
+		text=string.replace(text, '>', '&gt;')
+		return text
+
+
+	def _parse_abstract(self, abstract):
+		'''This function converts abstract section'''
+		abstract=self._html_encode(abstract)
+		abstract=re.sub(pat_paragraph, '<P>', abstract)
+		abstract=re.sub(pat_verbatim, '<PRE>\n\g<1></PRE>', abstract)
+		abstract=re.sub(pat_url, '<A HREF="\g<1>">\g<1></A>', abstract)
+		return abstract
+
 		
 	def parse_info(self,docfile):
 		'''This function reads a doc-base registry file. We use the 
@@ -64,9 +85,9 @@ class DocumentationInfo:
 		if part.has_key("Author"):
 			self.author=part.getheader("Author")
 		if part.has_key("Abstract"):
-			self.abstract=part.getheader("Abstract")
+			self.abstract=self._parse_abstract(part.getrawheader("Abstract"))
 		if part.has_key("Section"):
-			self.section=string.lower(part.getheader("Section"))
+			self.section=part.getheader("Section")
 		
 		while dd.unblock():
 			part=rfc822.Message(dd,0)

@@ -22,7 +22,7 @@ print "Content-Type: text/html\n"
 print '''<DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <title>Doc-base section index</title>
 </head>
 
@@ -41,7 +41,7 @@ please use the left frame.
 ''' % Section
 
 for doc in docutils.documents:
-	if (doc.section == string.lower(Section)):
+	if (doc.section == Section):
 		print '<tr><td bgcolor="#ffffff">'
 		print '<table cellpadding=3 cellspacing=0 border=0>'
 		print '<tr><td bgcolor="#eeeeff" align="right" valign="top"><strong>title:</strong></td><td bgcolor="#ffffff"><a href="%s">%s</a>&nbsp;<br></td></tr>' % (docutils.makedoclink(doc), doc.title)

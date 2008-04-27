@@ -7,7 +7,7 @@ Build-Depends-Indep: cdbs, debhelper (>= 4.1.0)
 
 Package: doc-central
 Architecture: all
-Depends: apache | httpd, python, info2www
+Depends: apache2 | httpd-cgi, python, info2www, doc-base (>= 0.8.10)
 Recommends: w3m | www-browser
 Description: web-based documentation browser
  Doc-Central is a tool to browse the documentation installed on your

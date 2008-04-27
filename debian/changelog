@@ -1,3 +1,17 @@
+doc-central (1.8.2+nmu1) unstable; urgency=low
+
+  * Non-maintainer upload.
+  * Update for a new doc-base (closes: #454187):
+    - switch to /var/lib/doc-base/documents;
+    - set charset of generated pages to UTF-8;
+    - don't lowerize section names;
+    - depend on appropriate versions of doc-base.
+  * Encode HTML special chars (closes: #360354) and handle the space+dot 
+    lines in doc-base files (closes: #360326).
+  * Depend on apache2 | httpd-cgi (closes: #472387).
+
+ -- Robert Luberda <robert@debian.org>  Sun, 27 Apr 2008 14:47:02 +0200
+
 doc-central (1.8.2) unstable; urgency=low
 
   * The "How can people still use that?" Release

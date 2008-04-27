@@ -34,7 +34,7 @@ print "Content-Type: text/html\n"
 print '''<DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <title>Doc-Base section index</title>
 </head>
 <body bgcolor="#ffffff" text="#000000" link="#0000cc" vlink="#000066"
@@ -59,7 +59,7 @@ for doc in docutils.documents:
 		links = docutils.makedoclinks(doc)
 		if links != '':
 			print '<tr><th bgcolor="#eeeeff" align="right" valign="top"><strong>formats:</strong></th><td bgcolor="#ffffff">%s&nbsp;<br></td></tr>' % links
-		print '<tr><th bgcolor="#eeeeff" align="right" valign="top"><strong>section:</strong></th><td bgcolor="#ffffff"><a href="%s">%s</a>&nbsp;<br></td></tr>' % (docutils.makesectionlink(doc.section), string.capitalize(doc.section))
+		print '<tr><th bgcolor="#eeeeff" align="right" valign="top"><strong>section:</strong></th><td bgcolor="#ffffff"><a href="%s">%s</a>&nbsp;<br></td></tr>' % (docutils.makesectionlink(doc.section), doc.section)
 		print '<tr><th bgcolor="#eeeeff" align="right" valign="top"><strong>author:</strong></th><td bgcolor="#ffffff">%s&nbsp;<br></td></tr>' % doc.author
 		print '<tr><th bgcolor="#eeeeff" align="right" valign="top"><strong>abstract:</strong></th><td bgcolor="#ffffff">%s&nbsp;<br></td></tr>' % doc.abstract
 		if docutils.makeextralinks(doc.package):

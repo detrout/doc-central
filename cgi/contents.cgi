@@ -23,7 +23,7 @@ def showsection(sect):
 				print "<UL>"
 				hdr=1
 			print '<LI><A HREF="%s">%s</A>' % \
-				(docutils.makesectionlink(subsect), string.capitalize(docutils.stripsection(subsect, mydepth)))
+				(docutils.makesectionlink(subsect), docutils.stripsection(subsect, mydepth))
 			showsection(subsect)
 	if (hdr==1):
 		print "</UL>"
@@ -41,7 +41,7 @@ print "Content-Type: text/html\n"
 print '''<DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <title>Doc-Base section index</title>
 </head>
 <body bgcolor="#ffffff" text="#000000" link="#0000cc" vlink="#000066"

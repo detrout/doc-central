@@ -38,9 +38,6 @@ def cleanupsections():
 	This means that we make sure that all intermediate sections are also
 	in the list, and that the list is sorter alphabetically.'''
 
-	for i in range(len(sections)):
-		sections[i]=string.capitalize(sections[i])
-
 	for sect in sections:
 		lst=string.split(sect,'/')
 		subsect=lst[0]
