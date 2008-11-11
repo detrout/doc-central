@@ -12,7 +12,7 @@ def showsection(sect):
 	hdr=0
 
 	if len(sect):
-		matcher=re.compile(sect+"/", re.IGNORECASE)
+		matcher=re.compile(re.escape(sect+"/"), re.IGNORECASE)
 	else:
 		matcher=re.compile("")
 

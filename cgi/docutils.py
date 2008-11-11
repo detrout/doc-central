@@ -3,7 +3,7 @@
 # throughout Doc-Central.
 
 # Import all system packages we need
-import os, string, sys, cgi, re
+import os, string, sys, cgi, re, urllib
 # Import all our own packages
 import docinfo, docconfig
 
@@ -78,12 +78,13 @@ def stripsection(sect, count=1, start=0):
 def makesectionlink(sect):
 	'''Create a URL to the section-index. We assume that the current
 	script is already the browser'''
+	# Note: the function is never called since it's overriden at the bottom
 
 	if os.environ.has_key("SCRIPT_NAME"):
 		base=os.environ["SCRIPT_NAME"]
 	else:
 		base="browse.cgi"
-	return base+"?section="+sect
+	return base+"?section="+urllib.quote(sect)
 
 
 def makedoclink(doc, format=None):
@@ -184,4 +185,4 @@ def makesectionlink(sect):
 	'''Turn a section-name into an URL to the right section-page using
 	browse.cgi'''
 
-	return scriptname("browse.cgi") + "?section=%s" % sect
+	return scriptname("browse.cgi") + "?section=%s" % urllib.quote(sect)
