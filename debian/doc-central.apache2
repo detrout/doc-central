@@ -1,0 +1,7 @@
+Alias /dc /usr/share/doc-central/www
+<Location /dc>
+  Options None
+  Order deny,allow
+  Deny from all
+  Allow from ::1 127.0.0.1
+</Location>

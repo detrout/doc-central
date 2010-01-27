@@ -1,3 +1,4 @@
 doccentral usr/bin
-html/*.html var/www/dc
+html/*.html usr/share/doc-central/www
 cgi/*.{cgi,py} usr/lib/cgi-bin/doc-central
+debian/doc-central.apache2 etc/apache2/conf.d

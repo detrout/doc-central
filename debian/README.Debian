@@ -1,0 +1,23 @@
+doc-central as of 1.8.2+nmu3
+----------------------------
+
+  Doc-central is no longer allowed to automatically install content
+  below '/var/www/'. This is dictated by FHS compliance.
+  
+  The old packages used to offer a local service
+  
+          "http://localhost/dc/".
+	  
+  This can now be accomplished by registering an alias with the web
+  server, or failing that, for a less capable web server, by manually
+  creating a soft link for the desired location below the web document
+  root, then pointing to '/usr/share/doc-central/www'.
+
+  To exemplify, the gist of these server aliases could be
+
+    (Apache2)   Alias  /dc  /usr/share/doc-central/www
+
+    (Lighttpd)  alias.url += ( "/dc/" => "/usr/share/doc-central/www/" )
+
+  This package installs a ready made, but restrictive, alias
+  definition for Apache2 in '/etc/apache2/conf.d/'.

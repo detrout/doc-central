@@ -4,3 +4,4 @@ if [ -L /usr/doc/$pkg ]; then
     rm -f /usr/doc/$pkg
 fi
 
+#DEBHELPER#

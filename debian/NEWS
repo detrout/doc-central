@@ -1,0 +1,15 @@
+doc-central (1.8.2+nmu3) unstable; urgency=low
+
+  Due to FHS compliance policy, this package neither creates, nor
+  installs any content in '/var/www/dc/'. Instead, the source content
+  of previous packages, only two html-files, are now deposited in
+  '/usr/share/doc-central/www/'. Observe that the old directory
+  '/var/www/dc/' from previous versions of Doc-central, will be
+  removed upon upgrade.
+  
+  The file README.Debian mentions ways of retaining the old
+  functionality without interruption. An Apache2 alias definition
+  is dropped into place by this package release.
+
+ -- Mats Erik Andersson <mats.andersson@gisladisker.se>  Wed, 27 Jan 2010 12:37:43 +0100
+
