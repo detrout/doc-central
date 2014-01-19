@@ -1,9 +1,9 @@
 Source: doc-central
 Section: web
 Priority: optional
-Maintainer: Guilherme de S. Pastore <guilherme.pastore@terra.com.br>
-Standards-Version: 3.6.2.1
-Build-Depends: cdbs, debhelper (>= 4.1.0)
+Maintainer: Debian QA Group <packages@qa.debian.org>
+Standards-Version: 3.9.5
+Build-Depends: cdbs, debhelper (>= 9)
 
 Package: doc-central
 Architecture: all

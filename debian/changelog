@@ -1,3 +1,16 @@
+doc-central (1.8.3) unstable; urgency=low
+
+  * QA upload.
+  * Maintainer field set to QA Group.
+  * Switch to 3.0 (native) format.
+  * Bump Standards-Version to 3.9.5.
+  * Debhelper compatibility level set to 9.
+  * Do not use shell brace expansion in debian/doc-central.install.
+  * Install Apache2 configuration file under /etc/apache2/conf-available/.
+  * Rename Apache2 configuration file to match binary package name.
+
+ -- Emanuele Rocca <ema@debian.org>  Sun, 19 Jan 2014 16:31:49 +0100
+
 doc-central (1.8.2+nmu3) unstable; urgency=low
 
   * Non-maintainer upload to settle an RC-bug.
