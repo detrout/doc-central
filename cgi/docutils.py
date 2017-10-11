@@ -97,7 +97,7 @@ def makedoclink(doc, format=None):
                 format = frm
                 break
     if not format:
-        format = doc.docs.keys()[0]
+        format = next(iter(doc.docs.keys()))
 
     if format == "info":
         m = re.match("/usr(/share)?/info/(.+)\.info", doc.docs[format])
