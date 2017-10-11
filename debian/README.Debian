@@ -1,5 +1,5 @@
-doc-central as of 1.8.2+nmu3
-----------------------------
+doc-central as of 1.9.0
+-----------------------
 
   Doc-central is no longer allowed to automatically install content
   below '/var/www/'. This is dictated by FHS compliance.
@@ -20,4 +20,17 @@ doc-central as of 1.8.2+nmu3
     (Lighttpd)  alias.url += ( "/dc/" => "/usr/share/doc-central/www/" )
 
   This package installs a ready made, but restrictive, alias
-  definition for Apache2 in '/etc/apache2/conf.d/'.
+  definition for Apache2 in '/etc/apache2/conf.d/doc-central.conf'.
+
+  When doc-central was originally written the default Apache configuration
+  would export /usr/share/doc/. That was considered a privacy issue and
+  was disabled by default.
+
+  The above doc-central.conf will add an alias for /doc and restricit
+  it to localhost.
+
+  Also may need to enable cgi.
+
+  With Apache that is a2enmod cgid or a2enmod cgi
+
+ -- Diane Trout <diane@ghic.org>, Wed, 11 Oct 2017 15:01:02 -0700
