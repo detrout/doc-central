@@ -19,9 +19,9 @@ docutils.cleanupsections()
 
 Section = string.strip(docconfig.Options["section"])
 
-print "Content-Type: text/html\n"
+print("Content-Type: text/html\n")
 
-print '''<DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+print('''<DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -40,24 +40,29 @@ please use the left frame.
 <p>
 <table cellpadding=0 cellspacing=0 border=0><tr><td bgcolor="#000066">
 <table cellpadding=0 cellspacing=1 border=0>
-''' % Section
+''' % Section)
 
 for doc in docutils.documents:
     if (doc.section == Section):
-        print '<tr><td bgcolor="#ffffff">'
-        print '<table cellpadding=3 cellspacing=0 border=0>'
-        print '<tr><td bgcolor="#eeeeff" align="right" valign="top"><strong>title:</strong></td><td bgcolor="#ffffff"><a href="%s">%s</a>&nbsp;<br></td></tr>' % (docutils.makedoclink(doc), doc.title)
+        print('<tr><td bgcolor="#ffffff">')
+        print('<table cellpadding=3 cellspacing=0 border=0>')
+        print('<tr><td bgcolor="#eeeeff" align="right" valign="top"><strong>title:</strong></td>'
+              '<td bgcolor="#ffffff"><a href="%s">%s</a>&nbsp;<br></td></tr>' % (docutils.makedoclink(doc), doc.title))
         links = docutils.makedoclinks(doc)
         if links != '':
-            print '<tr><th bgcolor="#eeeeff" align=right valign=top><strong>formats:</strong></th><td bgcolor="#ffffff">%s&nbsp;<br></td></tr>' % links
-        print '<tr><th bgcolor="#eeeeff" align="right" valign="top"><strong>author:</strong></th><td bgcolor="#ffffff">%s&nbsp;<br></td></tr>' % doc.author
-        print '<tr><th bgcolor="#eeeeff" align="right" valign="top"><strong>abstract:</strong></th><td bgcolor="#ffffff">%s&nbsp;<br></td></tr>' % doc.abstract
+            print('<tr><th bgcolor="#eeeeff" align=right valign=top><strong>formats:</strong></th>'
+                  '<td bgcolor="#ffffff">%s&nbsp;<br></td></tr>' % links)
+        print('<tr><th bgcolor="#eeeeff" align="right" valign="top"><strong>author:</strong></th>'
+              '<td bgcolor="#ffffff">%s&nbsp;<br></td></tr>' % doc.author)
+        print('<tr><th bgcolor="#eeeeff" align="right" valign="top"><strong>abstract:</strong></th>'
+              '<td bgcolor="#ffffff">%s&nbsp;<br></td></tr>' % doc.abstract)
         if docutils.makeextralinks(doc.package):
-            print '<tr><th bgcolor="#eeeeff" align="right" valign="top"><strong>see also:</strong></th><td bgcolor="#ffffff">%s&nbsp;<br></td></tr>' % docutils.makeextralinks(doc.package)
-        print '</table><p>'
-        print '</td></tr>'
+            print('<tr><th bgcolor="#eeeeff" align="right" valign="top"><strong>see also:</strong></th>'
+                  '<td bgcolor="#ffffff">%s&nbsp;<br></td></tr>' % docutils.makeextralinks(doc.package))
+        print('</table><p>')
+        print('</td></tr>')
 
-print '''</table>
+print('''</table>
 </td></tr></table>
 </body></html>
-'''
+''')

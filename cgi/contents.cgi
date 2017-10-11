@@ -5,6 +5,8 @@ import re
 # Import all our own stuff
 import docutils
 
+print = docutils.Writer()
+
 
 def showsection(sect):
     '''Recursively print a tree of all sections'''
@@ -21,13 +23,13 @@ def showsection(sect):
         height = (docutils.sectiondepth(subsect)-mydepth)
         if (matcher.match(subsect) and (height == 1)):
             if (hdr == 0):
-                print "<UL>"
+                print("<UL>")
                 hdr = 1
-            print '<LI><A HREF="%s">%s</A>' % \
-                (docutils.makesectionlink(subsect), docutils.stripsection(subsect, mydepth))
+            print('<LI><A HREF="%s">%s</A>' %
+                  (docutils.makesectionlink(subsect), docutils.stripsection(subsect, mydepth)))
             showsection(subsect)
     if (hdr == 1):
-        print "</UL>"
+        print("</UL>")
 
 
 # Get our configuration
@@ -38,9 +40,9 @@ docutils.processdirs()
 
 docutils.cleanupsections()
 
-print "Content-Type: text/html\n"
+print("Content-Type: text/html\n")
 
-print '''<DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+print('''<DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -49,14 +51,14 @@ print '''<DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <body bgcolor="#ffffff" text="#000000" link="#0000cc" vlink="#000066"
   alink="#ff0000"><base target="main">
 <a href="/dc/main.html">Home</a>
-'''
+''')
 
 showsection("")
 
-print """
+print("""
 <form action="%s">
 <input type="text" name="keyword">
 <input type="submit" value="search">
 </form>
 
-</body></html>""" % docutils.scriptname("search.cgi")
+</body></html>""" % docutils.scriptname("search.cgi"))
