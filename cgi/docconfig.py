@@ -17,7 +17,7 @@ Options = {
 
 ## System defaults
 
-# Location of the doc-base registries. 
+# Location of the doc-base registries.
 docbasedirs = ["/var/lib/doc-base/documents"]
 
 # Descriptions for the various documentation settings. These should probably
