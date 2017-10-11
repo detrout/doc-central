@@ -6,7 +6,7 @@
 import os
 import cgi
 import re
-import urllib
+from urllib.parse import quote
 # Import all our own packages
 import docinfo
 import docconfig
@@ -186,7 +186,7 @@ def makesectionlink(sect):
     '''Turn a section-name into an URL to the right section-page using
     browse.cgi'''
 
-    return scriptname("browse.cgi") + "?section=%s" % urllib.quote(sect)
+    return scriptname("browse.cgi") + "?section=%s" % quote(sect)
 
 class Writer:
     def __init__(self):
