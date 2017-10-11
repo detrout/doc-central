@@ -3,14 +3,12 @@
 # about a single document.
 
 # Import all system packages we need
-import os
-import rfc822
-import string
+from debian.deb822 import Deb822
 from functools import total_ordering
 import html
 import re
 # Import all our own packages
-import sectionedfile
+
 
 # Constants to select the sorting order for documents
 SORT_TITLE = 1
@@ -80,26 +78,23 @@ class DocumentationInfo:
         sectionedfile object to get the individual sections from the
         file, and rfc822 object to parse them.'''
 
-        fd = os.open(docfile, os.O_RDONLY)
-        fo = os.fdopen(fd)
-        dd = sectionedfile.SectionedFile(fo)
-        dd.divider = ""
+        with open(docfile, 'rb') as fp:
+            part_iter = Deb822.iter_paragraphs(fp)
 
-        part = rfc822.Message(dd, 0)
-        self.title = part.getheader("Title")
-        if "Author" in part:
-            self.author = part.getheader("Author")
-        if "Abstract" in part:
-            self.abstract = self._parse_abstract(part.getrawheader("Abstract"))
-        if "Section" in part:
-            self.section = part.getheader("Section")
+            header = next(part_iter)
+            self.title = header["Title"]
+            if "Author" in header:
+                self.author = header["Author"]
+            if "Abstract" in header:
+                self.abstract = self._parse_abstract(header["Abstract"])
+            if "Section" in header:
+                self.section = header["Section"]
 
-        while dd.unblock():
-            part = rfc822.Message(dd, 0)
-            if "Format" not in part:
-                continue
-            format = string.lower(part["Format"])
-            if "Index" in part:
-                self.docs[format] = part["Index"]
-            else:
-                self.docs[format] = part["Files"]
+            for part in part_iter:
+                if "Format" not in part:
+                    continue
+                format = part["Format"].lower()
+                if "Index" in part:
+                    self.docs[format] = part["Index"]
+                else:
+                    self.docs[format] = part["Files"]
