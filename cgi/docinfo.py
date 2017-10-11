@@ -6,6 +6,7 @@
 import os
 import rfc822
 import string
+import html
 import re
 # Import all our own packages
 import sectionedfile
@@ -57,16 +58,10 @@ class DocumentationInfo:
                 return 1
         return 0
 
-    def _html_encode(self, text):
-        '''HTML encodes text '''
-        text = string.replace(text, '&', '&amp;')
-        text = string.replace(text, '<', '&lt;')
-        text = string.replace(text, '>', '&gt;')
-        return text
 
     def _parse_abstract(self, abstract):
         '''This function converts abstract section'''
-        abstract = self._html_encode(abstract)
+        abstract = html.escape(abstract)
         abstract = re.sub(pat_paragraph, '<P>', abstract)
         abstract = re.sub(pat_verbatim, '<PRE>\n\g<1></PRE>', abstract)
         abstract = re.sub(pat_url, '<A HREF="\g<1>">\g<1></A>', abstract)
