@@ -4,6 +4,8 @@
 import docconfig
 import docutils
 
+print = docutils.Writer()
+
 # Get our configuration
 docutils.extractcgiparams()
 

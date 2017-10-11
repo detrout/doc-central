@@ -8,6 +8,8 @@ import docconfig
 import docutils
 
 
+print = docutils.Writer()
+
 def keywordmatch(RE, doc):
     return doc.package and RE.search(doc.package) \
         or doc.title and RE.search(doc.title) \

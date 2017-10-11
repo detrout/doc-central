@@ -187,3 +187,13 @@ def makesectionlink(sect):
     browse.cgi'''
 
     return scriptname("browse.cgi") + "?section=%s" % urllib.quote(sect)
+
+class Writer:
+    def __init__(self):
+        import sys
+        import codecs
+        self.utf8writer = codecs.getwriter('utf8')(sys.stdout.buffer)
+
+    def __call__(self, *args, end='\n', **kwargs):
+        self.utf8writer.write(*args)
+        self.utf8writer.write(end)
