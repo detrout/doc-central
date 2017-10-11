@@ -30,9 +30,9 @@ Keyword = string.strip(docconfig.Options["keyword"])
 
 Title = "Search for '%s'" % Keyword
 try:
-    KeywordRE = re.compile(Keyword, re.I);
+    KeywordRE = re.compile(Keyword, re.I)
 except re.error:
-    KeywordRE = re.compile(re.escape(Keyword), re.I);
+    KeywordRE = re.compile(re.escape(Keyword), re.I)
 
 print "Content-Type: text/html\n"
 

@@ -59,4 +59,4 @@ print """
 <input type="submit" value="search">
 </form>
 
-</body></html>""" % docutils.scriptname("search.cgi");
+</body></html>""" % docutils.scriptname("search.cgi")

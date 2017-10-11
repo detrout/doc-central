@@ -40,7 +40,7 @@ class SectionedFile:
 
             if string.strip(line) == self.divider:
                 eating = 1
-                continue;
+                continue
             else:
                 if eating:
                     self.mustunget = 1
