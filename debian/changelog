@@ -1,3 +1,15 @@
+doc-central (1.9.0) unstable; urgency=medium
+
+  * Reformat code to conform to pep8 standards
+  * Remove unused imports and code
+  * Port to Python 3
+  * Use python3-debian to parse doc-base files
+  * Update doc-central.conf Apache config to 2.4 access controls
+  * Update REAME.Debian with suggestions how to enable doc-central with
+    Apache 2.4
+
+ -- Diane Trout <diane@ghic.org>  Tue, 10 Oct 2017 22:55:02 -0700
+
 doc-central (1.8.3) unstable; urgency=low
 
   * QA upload.
