@@ -11,11 +11,11 @@ docutils.extractcgiparams()
 # Read the list of documents available
 docutils.processdirs()
 
-docinfo.SortMethod=[docinfo.SORT_SECTION, docinfo.SORT_TITLE]
+docinfo.SortMethod = [docinfo.SORT_SECTION, docinfo.SORT_TITLE]
 docutils.documents.sort()
 docutils.cleanupsections()
 
-Section=string.strip(docconfig.Options["section"])
+Section = string.strip(docconfig.Options["section"])
 
 print "Content-Type: text/html\n"
 
@@ -41,19 +41,19 @@ please use the left frame.
 ''' % Section
 
 for doc in docutils.documents:
-	if (doc.section == Section):
-		print '<tr><td bgcolor="#ffffff">'
-		print '<table cellpadding=3 cellspacing=0 border=0>'
-		print '<tr><td bgcolor="#eeeeff" align="right" valign="top"><strong>title:</strong></td><td bgcolor="#ffffff"><a href="%s">%s</a>&nbsp;<br></td></tr>' % (docutils.makedoclink(doc), doc.title)
-		links = docutils.makedoclinks(doc)
-		if links != '':
-			print '<tr><th bgcolor="#eeeeff" align=right valign=top><strong>formats:</strong></th><td bgcolor="#ffffff">%s&nbsp;<br></td></tr>' % links
-		print '<tr><th bgcolor="#eeeeff" align="right" valign="top"><strong>author:</strong></th><td bgcolor="#ffffff">%s&nbsp;<br></td></tr>' % doc.author
-		print '<tr><th bgcolor="#eeeeff" align="right" valign="top"><strong>abstract:</strong></th><td bgcolor="#ffffff">%s&nbsp;<br></td></tr>' % doc.abstract
-		if docutils.makeextralinks(doc.package):
-			print '<tr><th bgcolor="#eeeeff" align="right" valign="top"><strong>see also:</strong></th><td bgcolor="#ffffff">%s&nbsp;<br></td></tr>' % docutils.makeextralinks(doc.package)
-		print '</table><p>'
-		print '</td></tr>'
+    if (doc.section == Section):
+        print '<tr><td bgcolor="#ffffff">'
+        print '<table cellpadding=3 cellspacing=0 border=0>'
+        print '<tr><td bgcolor="#eeeeff" align="right" valign="top"><strong>title:</strong></td><td bgcolor="#ffffff"><a href="%s">%s</a>&nbsp;<br></td></tr>' % (docutils.makedoclink(doc), doc.title)
+        links = docutils.makedoclinks(doc)
+        if links != '':
+            print '<tr><th bgcolor="#eeeeff" align=right valign=top><strong>formats:</strong></th><td bgcolor="#ffffff">%s&nbsp;<br></td></tr>' % links
+        print '<tr><th bgcolor="#eeeeff" align="right" valign="top"><strong>author:</strong></th><td bgcolor="#ffffff">%s&nbsp;<br></td></tr>' % doc.author
+        print '<tr><th bgcolor="#eeeeff" align="right" valign="top"><strong>abstract:</strong></th><td bgcolor="#ffffff">%s&nbsp;<br></td></tr>' % doc.abstract
+        if docutils.makeextralinks(doc.package):
+            print '<tr><th bgcolor="#eeeeff" align="right" valign="top"><strong>see also:</strong></th><td bgcolor="#ffffff">%s&nbsp;<br></td></tr>' % docutils.makeextralinks(doc.package)
+        print '</table><p>'
+        print '</td></tr>'
 
 print '''</table>
 </td></tr></table>

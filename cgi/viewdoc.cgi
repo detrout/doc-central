@@ -8,7 +8,7 @@ import docconfig, docutils
 # Get our configuration
 docutils.extractcgiparams()
 
-Keyword=string.strip(docconfig.Options["keyword"])
+Keyword = string.strip(docconfig.Options["keyword"])
 
 Title = "Direct access to '%s'" % Keyword
 

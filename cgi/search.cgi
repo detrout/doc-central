@@ -6,10 +6,11 @@ import cgi, os, sys, string, re
 import docinfo, docconfig, docutils
 
 def keywordmatch(RE, doc):
-	return doc.package  and RE.search(doc.package) \
-            or doc.title    and RE.search(doc.title)   \
-	    or doc.author   and RE.search(doc.author)  \
-	    or doc.abstract and RE.search(doc.abstract)
+    return doc.package and RE.search(doc.package) \
+        or doc.title and RE.search(doc.title) \
+        or doc.author and RE.search(doc.author) \
+        or doc.abstract and RE.search(doc.abstract)
+
 
 # Get our configuration
 docutils.extractcookies()
@@ -17,17 +18,17 @@ docutils.extractcgiparams()
 # Read the list of documents available
 docutils.processdirs()
 
-docinfo.SortMethod=[docinfo.SORT_SECTION, docinfo.SORT_TITLE]
+docinfo.SortMethod = [docinfo.SORT_SECTION, docinfo.SORT_TITLE]
 docutils.documents.sort()
 docutils.cleanupsections()
 
-Keyword=string.strip(docconfig.Options["keyword"])
+Keyword = string.strip(docconfig.Options["keyword"])
 
 Title = "Search for '%s'" % Keyword
 try:
-	KeywordRE = re.compile(Keyword, re.I);
+    KeywordRE = re.compile(Keyword, re.I);
 except re.error:
-	KeywordRE = re.compile(re.escape(Keyword), re.I);
+    KeywordRE = re.compile(re.escape(Keyword), re.I);
 
 print "Content-Type: text/html\n"
 
@@ -52,20 +53,20 @@ please use the left frame.
 ''' % Title
 
 for doc in docutils.documents:
-	if (keywordmatch(KeywordRE, doc)):
-		print '<tr><td bgcolor="#ffffff">'
-		print '<table cellpadding=4 cellspacing=0 border=0>'
-		print '<tr><td bgcolor="#eeeeff" align="right" valign="top"><strong>title:</strong></td><td bgcolor="#ffffff"><a href="%s">%s</a>&nbsp;<br></td></tr>' % (docutils.makedoclink(doc), doc.title)
-		links = docutils.makedoclinks(doc)
-		if links != '':
-			print '<tr><th bgcolor="#eeeeff" align="right" valign="top"><strong>formats:</strong></th><td bgcolor="#ffffff">%s&nbsp;<br></td></tr>' % links
-		print '<tr><th bgcolor="#eeeeff" align="right" valign="top"><strong>section:</strong></th><td bgcolor="#ffffff"><a href="%s">%s</a>&nbsp;<br></td></tr>' % (docutils.makesectionlink(doc.section), doc.section)
-		print '<tr><th bgcolor="#eeeeff" align="right" valign="top"><strong>author:</strong></th><td bgcolor="#ffffff">%s&nbsp;<br></td></tr>' % doc.author
-		print '<tr><th bgcolor="#eeeeff" align="right" valign="top"><strong>abstract:</strong></th><td bgcolor="#ffffff">%s&nbsp;<br></td></tr>' % doc.abstract
-		if docutils.makeextralinks(doc.package):
-			print '<tr><th bgcolor="#eeeeff" align="right" valign="top"><strong>see also:</strong></th><td bgcolor="#ffffff">%s&nbsp;<br></td></tr>' % docutils.makeextralinks(doc.package)
-		print '</table><p>'
-		print '</td></tr>'
+    if (keywordmatch(KeywordRE, doc)):
+        print '<tr><td bgcolor="#ffffff">'
+        print '<table cellpadding=4 cellspacing=0 border=0>'
+        print '<tr><td bgcolor="#eeeeff" align="right" valign="top"><strong>title:</strong></td><td bgcolor="#ffffff"><a href="%s">%s</a>&nbsp;<br></td></tr>' % (docutils.makedoclink(doc), doc.title)
+        links = docutils.makedoclinks(doc)
+        if links != '':
+            print '<tr><th bgcolor="#eeeeff" align="right" valign="top"><strong>formats:</strong></th><td bgcolor="#ffffff">%s&nbsp;<br></td></tr>' % links
+        print '<tr><th bgcolor="#eeeeff" align="right" valign="top"><strong>section:</strong></th><td bgcolor="#ffffff"><a href="%s">%s</a>&nbsp;<br></td></tr>' % (docutils.makesectionlink(doc.section), doc.section)
+        print '<tr><th bgcolor="#eeeeff" align="right" valign="top"><strong>author:</strong></th><td bgcolor="#ffffff">%s&nbsp;<br></td></tr>' % doc.author
+        print '<tr><th bgcolor="#eeeeff" align="right" valign="top"><strong>abstract:</strong></th><td bgcolor="#ffffff">%s&nbsp;<br></td></tr>' % doc.abstract
+        if docutils.makeextralinks(doc.package):
+            print '<tr><th bgcolor="#eeeeff" align="right" valign="top"><strong>see also:</strong></th><td bgcolor="#ffffff">%s&nbsp;<br></td></tr>' % docutils.makeextralinks(doc.package)
+        print '</table><p>'
+        print '</td></tr>'
 
 print '''</table>
 </td></tr></table>

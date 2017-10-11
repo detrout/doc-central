@@ -6,27 +6,28 @@ import cgi, os, sys, string, re
 import docinfo, docconfig, docutils
 
 def showsection(sect):
-	'''Recursively print a tree of all sections'''
+    '''Recursively print a tree of all sections'''
 
-	mydepth=docutils.sectiondepth(sect)
-	hdr=0
+    mydepth = docutils.sectiondepth(sect)
+    hdr = 0
 
-	if len(sect):
-		matcher=re.compile(re.escape(sect+"/"), re.IGNORECASE)
-	else:
-		matcher=re.compile("")
+    if len(sect):
+        matcher = re.compile(re.escape(sect+"/"), re.IGNORECASE)
+    else:
+        matcher = re.compile("")
 
-	for subsect in docutils.sections:
-		height=(docutils.sectiondepth(subsect)-mydepth)
-		if (matcher.match(subsect) and (height==1)):
-			if (hdr==0):
-				print "<UL>"
-				hdr=1
-			print '<LI><A HREF="%s">%s</A>' % \
-				(docutils.makesectionlink(subsect), docutils.stripsection(subsect, mydepth))
-			showsection(subsect)
-	if (hdr==1):
-		print "</UL>"
+    for subsect in docutils.sections:
+        height = (docutils.sectiondepth(subsect)-mydepth)
+        if (matcher.match(subsect) and (height == 1)):
+            if (hdr == 0):
+                print "<UL>"
+                hdr = 1
+            print '<LI><A HREF="%s">%s</A>' % \
+                (docutils.makesectionlink(subsect), docutils.stripsection(subsect, mydepth))
+            showsection(subsect)
+    if (hdr == 1):
+        print "</UL>"
+
 
 # Get our configuration
 docutils.extractcookies()
