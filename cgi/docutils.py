@@ -25,7 +25,7 @@ def processdir(dir):
         for entry in os.listdir(dir):
             if os.path.isfile(dir+"/"+entry):
                 newdoc = docinfo.DocumentationInfo(dir+"/"+entry)
-                if not newdoc.section in sections:
+                if newdoc.section not in sections:
                     sections.append(newdoc.section)
                 documents.append(newdoc)
     except OSError, err:
@@ -50,7 +50,7 @@ def cleanupsections():
         lst = string.split(sect, '/')
         subsect = lst[0]
         while len(lst) > 1:
-            if not subsect in sections:
+            if subsect not in sections:
                 sections.append(subsect)
             del lst[0]
             subsect = subsect + "/" + lst[0]
