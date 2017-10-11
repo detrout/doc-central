@@ -6,6 +6,7 @@
 import os
 import rfc822
 import string
+from functools import total_ordering
 import html
 import re
 # Import all our own packages
@@ -22,6 +23,7 @@ pat_verbatim = re.compile('((^  +[^ ].*\n)+)', re.MULTILINE)
 pat_url = re.compile('((http|ftp)s?://[a-zA-Z0-9-]+\.[a-zA-Z0-9-./]+)')
 
 
+@total_ordering
 class DocumentationInfo:
     def __init__(self, docfile=None):
         '''DocumentationInfo constructor. If a filename is passed assume
@@ -45,19 +47,25 @@ class DocumentationInfo:
         else:
             return self.title
 
-    def __cmp__(self, other):
+    def __eq__(self, other):
         '''Compare ourself to another DocumentationInfo object using
         the sorting options defined in SortMethod.'''
 
         for key in SortMethod:
-            (a, b) = (string.lower(self.__getkey(key)),
-                      string.lower(other.__getkey(key)))
-            if (a < b):
-                return -1
-            elif (a > b):
-                return 1
-        return 0
+            if self.__getkey(key).lower() != other.__getkey(key).lower():
+                return False
 
+        return True
+
+    def __lt__(self, other):
+        '''Compare ourself to another DocumentationInfo object using
+        the sorting options defined in SortMethod.'''
+
+        for key in SortMethod:
+            if self.__getkey(key).lower() < other.__getkey(key).lower():
+                return True
+
+        return False
 
     def _parse_abstract(self, abstract):
         '''This function converts abstract section'''
