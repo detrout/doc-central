@@ -28,7 +28,7 @@ def processdir(dir):
                 if newdoc.section not in sections:
                     sections.append(newdoc.section)
                 documents.append(newdoc)
-    except OSError, err:
+    except OSError as err:
         pass
 
 
