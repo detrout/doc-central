@@ -4,7 +4,7 @@
 # by a specific seperator.
 
 # Import all system packages we need
-import sys, string
+import string
 
 
 class SectionedFile:

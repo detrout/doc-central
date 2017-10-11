@@ -1,9 +1,10 @@
 #! /usr/bin/python
 
 # Import all system packages we need
-import cgi, os, sys, string, re
+import re
 # Import all our own stuff
-import docinfo, docconfig, docutils
+import docutils
+
 
 def showsection(sect):
     '''Recursively print a tree of all sections'''

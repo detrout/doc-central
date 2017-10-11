@@ -1,9 +1,13 @@
 #!/usr/bin/python
 
 # Import all system packages we need
-import cgi, os, sys, string, re
+import string
+import re
 # Import all our own stuff
-import docinfo, docconfig, docutils
+import docinfo
+import docconfig
+import docutils
+
 
 def keywordmatch(RE, doc):
     return doc.package and RE.search(doc.package) \

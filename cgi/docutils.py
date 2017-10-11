@@ -3,9 +3,14 @@
 # throughout Doc-Central.
 
 # Import all system packages we need
-import os, string, sys, cgi, re, urllib
+import os
+import string
+import cgi
+import re
+import urllib
 # Import all our own packages
-import docinfo, docconfig
+import docinfo
+import docconfig
 
 # Some globals that are used throughout doc-central
 documents = []

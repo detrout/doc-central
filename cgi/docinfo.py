@@ -3,7 +3,10 @@
 # about a single document.
 
 # Import all system packages we need
-import sys, os, rfc822, string, re
+import os
+import rfc822
+import string
+import re
 # Import all our own packages
 import sectionedfile
 

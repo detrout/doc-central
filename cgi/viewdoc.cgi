@@ -1,9 +1,10 @@
 #!/usr/bin/python
 
 # Import all system packages we need
-import cgi, os, sys, string, re
+import string
 # Import all our own stuff
-import docconfig, docutils
+import docconfig
+import docutils
 
 # Get our configuration
 docutils.extractcgiparams()
