@@ -84,19 +84,19 @@ class DocumentationInfo:
 
         part = rfc822.Message(dd, 0)
         self.title = part.getheader("Title")
-        if part.has_key("Author"):
+        if "Author" in part:
             self.author = part.getheader("Author")
-        if part.has_key("Abstract"):
+        if "Abstract" in part:
             self.abstract = self._parse_abstract(part.getrawheader("Abstract"))
-        if part.has_key("Section"):
+        if "Section" in part:
             self.section = part.getheader("Section")
 
         while dd.unblock():
             part = rfc822.Message(dd, 0)
-            if not part.has_key("Format"):
+            if "Format" not in part:
                 continue
             format = string.lower(part["Format"])
-            if part.has_key("Index"):
+            if "Index" in part:
                 self.docs[format] = part["Index"]
             else:
                 self.docs[format] = part["Files"]

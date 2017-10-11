@@ -89,7 +89,7 @@ def makesectionlink(sect):
     script is already the browser'''
     # Note: the function is never called since it's overriden at the bottom
 
-    if os.environ.has_key("SCRIPT_NAME"):
+    if "SCRIPT_NAME" in os.environ:
         base = os.environ["SCRIPT_NAME"]
     else:
         base = "browse.cgi"
@@ -106,7 +106,7 @@ def makedoclink(doc, format=None):
         return ''
     if not format:
         for frm in docconfig.FormatOrder:
-            if doc.docs.has_key(frm):
+            if frm in doc.docs:
                 format = frm
                 break
     if not format:
@@ -159,7 +159,7 @@ def makedoclinks(doc):
     buf = ""
     count = 0
     for frm in docconfig.FormatOrder:
-        if doc.docs.has_key(frm):
+        if frm in doc.docs:
             buf = buf + '<A HREF="%s">[%s]</A>' % (makedoclink(doc, frm), frm)
             count = count + 1
     if count > 1:
@@ -171,7 +171,7 @@ def makedoclinks(doc):
 def extractcookies(prefix="doc-central_"):
     '''Extract all http cookies that the browser passed to use and
     merge them in docconfig.Options.'''
-    if os.environ.has_key("HTTP_COOKIE"):
+    if "HTTP_COOKIE" in os.environ:
         for cookie in string.split(os.environ.get("HTTP_COOKIE", ''), ';'):
             (key, value) = string.split(string.strip(cookie), "=", 2)
             m = re.match("%s(.*)", key)
@@ -188,7 +188,7 @@ def extractcgiparams():
 
 def scriptname(script):
     '''Return a link to another script in the same directory.'''
-    if os.environ.has_key("SCRIPT_NAME"):
+    if "SCRIPT_NAME" in os.environ:
         base = os.path.dirname(os.environ["SCRIPT_NAME"])+"/"
     else:
         base = ""
