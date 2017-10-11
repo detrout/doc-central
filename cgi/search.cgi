@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 
 # Import all system packages we need
-import string
 import re
 # Import all our own stuff
 import docinfo
@@ -26,7 +25,7 @@ docinfo.SortMethod = [docinfo.SORT_SECTION, docinfo.SORT_TITLE]
 docutils.documents.sort()
 docutils.cleanupsections()
 
-Keyword = string.strip(docconfig.Options["keyword"])
+Keyword = docconfig.Options["keyword"].strip()
 
 Title = "Search for '%s'" % Keyword
 try:

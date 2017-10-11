@@ -1,7 +1,5 @@
 #!/usr/bin/python3
 
-# Import all system packages we need
-import string
 # Import all our own stuff
 import docconfig
 import docutils
@@ -9,7 +7,7 @@ import docutils
 # Get our configuration
 docutils.extractcgiparams()
 
-Keyword = string.strip(docconfig.Options["keyword"])
+Keyword = docconfig.Options["keyword"].strip()
 
 Title = "Direct access to '%s'" % Keyword
 

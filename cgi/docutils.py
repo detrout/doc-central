@@ -4,7 +4,6 @@
 
 # Import all system packages we need
 import os
-import string
 import cgi
 import re
 import urllib
@@ -47,7 +46,7 @@ def cleanupsections():
     in the list, and that the list is sorter alphabetically.'''
 
     for sect in sections:
-        lst = string.split(sect, '/')
+        lst = sect.split('/')
         subsect = lst[0]
         while len(lst) > 1:
             if subsect not in sections:
@@ -63,7 +62,7 @@ def sectiondepth(sect):
     is defined as 0'''
 
     if (len(sect)):
-        return string.count(sect, "/")+1
+        return sect.count("/")+1
     else:
         return 0
 
@@ -73,14 +72,14 @@ def stripsection(sect, count=1, start=0):
 
     if start == 0:
         for i in range(count):
-            sect = sect[string.find(sect, "/")+1:]
+            sect = sect[sect.find("/")+1:]
     else:
         for i in range(count):
-            j = string.rfind(sect, "/")
+            j = sect.rfind("/")
             if j == -1:
                 sect = ""
             else:
-                sect = sect[0:string.rfind(sect, "/")]
+                sect = sect[0:sect.rfind("/")]
     return sect
 
 
@@ -160,8 +159,8 @@ def extractcookies(prefix="doc-central_"):
     '''Extract all http cookies that the browser passed to use and
     merge them in docconfig.Options.'''
     if "HTTP_COOKIE" in os.environ:
-        for cookie in string.split(os.environ.get("HTTP_COOKIE", ''), ';'):
-            (key, value) = string.split(string.strip(cookie), "=", 2)
+        for cookie in os.environ.get("HTTP_COOKIE", '').split(';'):
+            (key, value) = cookie.strip("=", 2)
             docconfig.Options[key] = value
 
 

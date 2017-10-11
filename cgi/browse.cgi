@@ -1,7 +1,5 @@
 #! /usr/bin/python3
 
-# Import all system packages we need
-import string
 # Import all our own stuff
 import docinfo
 import docconfig
@@ -17,7 +15,7 @@ docinfo.SortMethod = [docinfo.SORT_SECTION, docinfo.SORT_TITLE]
 docutils.documents.sort()
 docutils.cleanupsections()
 
-Section = string.strip(docconfig.Options["section"])
+Section = docconfig.Options["section"].strip()
 
 print("Content-Type: text/html\n")
 
