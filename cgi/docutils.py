@@ -84,18 +84,6 @@ def stripsection(sect, count=1, start=0):
     return sect
 
 
-def makesectionlink(sect):
-    '''Create a URL to the section-index. We assume that the current
-    script is already the browser'''
-    # Note: the function is never called since it's overriden at the bottom
-
-    if "SCRIPT_NAME" in os.environ:
-        base = os.environ["SCRIPT_NAME"]
-    else:
-        base = "browse.cgi"
-    return base+"?section="+urllib.quote(sect)
-
-
 def makedoclink(doc, format=None):
     '''Create a URL to a specific document. If the document is available in
     multiple formats you can specify the format manually, or otherwise we
@@ -174,7 +162,6 @@ def extractcookies(prefix="doc-central_"):
     if "HTTP_COOKIE" in os.environ:
         for cookie in string.split(os.environ.get("HTTP_COOKIE", ''), ';'):
             (key, value) = string.split(string.strip(cookie), "=", 2)
-            m = re.match("%s(.*)", key)
             docconfig.Options[key] = value
 
 
