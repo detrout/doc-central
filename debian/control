@@ -11,5 +11,4 @@ Depends: apache2 | httpd-cgi, python, info2www, doc-base (>= 0.8.10), ${misc:Dep
 Recommends: w3m | www-browser
 Description: web-based documentation browser
  Doc-Central is a tool to browse the documentation installed on your
- system using their doc-base entries. 
-
+ system using their doc-base entries.
