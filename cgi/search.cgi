@@ -35,7 +35,7 @@ try:
 except re.error:
     KeywordRE = re.compile(re.escape(Keyword), re.I)
 
-print("Content-Type: text/html\n")
+print("Content-Type: text/html; charset=UTF-8\n")
 
 print('''<DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
