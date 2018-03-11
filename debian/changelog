@@ -7,6 +7,7 @@ doc-central (1.9.0) unstable; urgency=medium
   * Update doc-central.conf Apache config to 2.4 access controls
   * Update REAME.Debian with suggestions how to enable doc-central with
     Apache 2.4
+  * Add canonical repository URLs
 
  -- Diane Trout <diane@ghic.org>  Tue, 10 Oct 2017 22:55:02 -0700
 
