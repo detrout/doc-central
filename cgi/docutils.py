@@ -3,6 +3,7 @@
 # throughout Doc-Central.
 
 # Import all system packages we need
+from http.cookies import SimpleCookie
 import os
 import cgi
 import re
@@ -159,9 +160,9 @@ def extractcookies(prefix="doc-central_"):
     '''Extract all http cookies that the browser passed to use and
     merge them in docconfig.Options.'''
     if "HTTP_COOKIE" in os.environ:
-        for cookie in os.environ.get("HTTP_COOKIE", '').split(';'):
-            (key, value) = cookie.strip("=", 2)
-            docconfig.Options[key] = value
+        jar = SimpleCookie(os.environ.get("HTTP_COOKIE", ''))
+        for key in jar:
+            docconfig.Options[key] = jar[key]
 
 
 def extractcgiparams():
