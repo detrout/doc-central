@@ -1,3 +1,9 @@
+doc-central (1.9.1) UNRELEASED; urgency=medium
+
+  * d/changelog: Remove trailing whitespaces
+
+ -- Ondřej Nový <onovy@debian.org>  Mon, 01 Oct 2018 10:15:41 +0200
+
 doc-central (1.9.0) unstable; urgency=medium
 
   * Reformat code to conform to pep8 standards
@@ -58,7 +64,7 @@ doc-central (1.8.2+nmu1) unstable; urgency=low
     - set charset of generated pages to UTF-8;
     - don't lowerize section names;
     - depend on appropriate versions of doc-base.
-  * Encode HTML special chars (closes: #360354) and handle the space+dot 
+  * Encode HTML special chars (closes: #360354) and handle the space+dot
     lines in doc-base files (closes: #360326).
   * Depend on apache2 | httpd-cgi (closes: #472387).
 
@@ -93,7 +99,7 @@ doc-central (1.8.2) unstable; urgency=low
     - cleaned up
 
  -- Guilherme de S. Pastore <guilherme.pastore@terra.com.br>  Mon, 12 Dec 2005 23:04:20 -0200
-  
+
 doc-central (1.8.1) unstable; urgency=low
 
   * The "Naming Releases is Fun" Release
