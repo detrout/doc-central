@@ -11,7 +11,7 @@ doc-central (1.9.0) unstable; urgency=medium
   * Port to Python 3
   * Use python3-debian to parse doc-base files
   * Update doc-central.conf Apache config to 2.4 access controls
-  * Update REAME.Debian with suggestions how to enable doc-central with
+  * Update README.Debian with suggestions how to enable doc-central with
     Apache 2.4
   * Add canonical repository URLs
 
