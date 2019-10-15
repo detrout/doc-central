@@ -1,11 +1,6 @@
-doc-central (1.9.1) UNRELEASED; urgency=medium
-
-  * d/changelog: Remove trailing whitespaces
-
- -- Ondřej Nový <onovy@debian.org>  Mon, 01 Oct 2018 10:15:41 +0200
-
 doc-central (1.9.0) unstable; urgency=medium
 
+  [ Diane Trout]
   * Reformat code to conform to pep8 standards
   * Remove unused imports and code
   * Port to Python 3
@@ -14,6 +9,9 @@ doc-central (1.9.0) unstable; urgency=medium
   * Update README.Debian with suggestions how to enable doc-central with
     Apache 2.4
   * Add canonical repository URLs
+
+  [Ondřej Nový]
+  * d/changelog: Remove trailing whitespaces
 
  -- Diane Trout <diane@ghic.org>  Tue, 10 Oct 2017 22:55:02 -0700
 
