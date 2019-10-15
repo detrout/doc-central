@@ -3,7 +3,7 @@ Section: web
 Priority: optional
 Maintainer: Diane Trout <diane@ghic.org>
 Standards-Version: 4.4.1
-Build-Depends: debhelper (>= 9)
+Build-Depends: debhelper-compat (= 12)
 Vcs-Browser: https://salsa.debian.org/debian/doc-central
 Vcs-Git: https://salsa.debian.org/debian/doc-central.git
 
