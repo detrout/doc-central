@@ -6,14 +6,33 @@ doc-central (1.9.0) unstable; urgency=medium
   * Port to Python 3
   * Use python3-debian to parse doc-base files
   * Update doc-central.conf Apache config to 2.4 access controls
+    (Closes: #669767)
   * Update README.Debian with suggestions how to enable doc-central with
     Apache 2.4
   * Add canonical repository URLs
 
-  [Ondřej Nový]
+  [ Ondřej Nový ]
   * d/changelog: Remove trailing whitespaces
 
- -- Diane Trout <diane@ghic.org>  Tue, 10 Oct 2017 22:55:02 -0700
+  [ Diane Trout ]
+  * Use Python 3's http.cookie parser instead of doing it by hand
+  * Sort returned documents by title ignoring common words
+  * Move the search box to the top of the sidebar
+  * Default to opening documents in a new tab. (Closes: #70657)
+  * Adopt doc-central. (Closes: #566364)
+  * Lintian recommends depending on sensible-utils
+  * Update copyright to use machine parsable format
+  * Use set -e in maintainer script as recommended lintian
+  * Update Standards-Version to 4.4.1. (Fixed copyright file)
+  * Switch to using more popular dh build system
+  * Extend package extended description
+  * Fix typo in changelog
+  * Merge Ondřej Nový's changelog entry
+  * Default doccentral command to localhost instead of hostname
+  * Update to debhelper-compat (= 12)
+  * Update to use dh-apache2 (Closes: #132756)
+
+ -- Diane Trout <diane@ghic.org>  Tue, 15 Oct 2019 15:47:43 -0700
 
 doc-central (1.8.3) unstable; urgency=low
 
