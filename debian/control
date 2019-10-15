@@ -1,7 +1,7 @@
 Source: doc-central
 Section: web
 Priority: optional
-Maintainer: Debian QA Group <packages@qa.debian.org>
+Maintainer: Diane Trout <diane@ghic.org>
 Standards-Version: 3.9.5
 Build-Depends: cdbs, debhelper (>= 9)
 Vcs-Browser: https://salsa.debian.org/debian/doc-central
