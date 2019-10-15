@@ -7,6 +7,16 @@ import docutils
 
 print = docutils.Writer()
 
+
+def get_sortable_title(doc):
+    """Return title with a few common words removed.
+    """
+    title = doc.title.strip().lower()
+    for common in ['a ', 'an ', 'the ']:
+        title = title.replace(common, '')
+    return title
+
+
 # Get our configuration
 docutils.extractcookies()
 docutils.extractcgiparams()
@@ -42,25 +52,25 @@ please use the left frame.
 <table cellpadding=0 cellspacing=1 border=0>
 ''' % Section)
 
-for doc in docutils.documents:
-    if (doc.section == Section):
-        print('<tr><td bgcolor="#ffffff">')
-        print('<table cellpadding=3 cellspacing=0 border=0>')
-        print('<tr><td bgcolor="#eeeeff" align="right" valign="top"><strong>title:</strong></td>'
-              '<td bgcolor="#ffffff"><a href="%s">%s</a>&nbsp;<br></td></tr>' % (docutils.makedoclink(doc), doc.title))
-        links = docutils.makedoclinks(doc)
-        if links != '':
-            print('<tr><th bgcolor="#eeeeff" align=right valign=top><strong>formats:</strong></th>'
-                  '<td bgcolor="#ffffff">%s&nbsp;<br></td></tr>' % links)
-        print('<tr><th bgcolor="#eeeeff" align="right" valign="top"><strong>author:</strong></th>'
-              '<td bgcolor="#ffffff">%s&nbsp;<br></td></tr>' % doc.author)
-        print('<tr><th bgcolor="#eeeeff" align="right" valign="top"><strong>abstract:</strong></th>'
-              '<td bgcolor="#ffffff">%s&nbsp;<br></td></tr>' % doc.abstract)
-        if docutils.makeextralinks(doc.package):
-            print('<tr><th bgcolor="#eeeeff" align="right" valign="top"><strong>see also:</strong></th>'
-                  '<td bgcolor="#ffffff">%s&nbsp;<br></td></tr>' % docutils.makeextralinks(doc.package))
-        print('</table><p>')
-        print('</td></tr>')
+filtered_documents = (d for d in docutils.documents if d.section == Section)
+for doc in sorted(filtered_documents, key=get_sortable_title):
+    print('<tr><td bgcolor="#ffffff">')
+    print('<table cellpadding=3 cellspacing=0 border=0>')
+    print('<tr><td bgcolor="#eeeeff" align="right" valign="top"><strong>title:</strong></td>'
+          '<td bgcolor="#ffffff"><a href="%s">%s</a>&nbsp;<br></td></tr>' % (docutils.makedoclink(doc), doc.title))
+    links = docutils.makedoclinks(doc)
+    if links != '':
+        print('<tr><th bgcolor="#eeeeff" align=right valign=top><strong>formats:</strong></th>'
+              '<td bgcolor="#ffffff">%s&nbsp;<br></td></tr>' % links)
+    print('<tr><th bgcolor="#eeeeff" align="right" valign="top"><strong>author:</strong></th>'
+          '<td bgcolor="#ffffff">%s&nbsp;<br></td></tr>' % doc.author)
+    print('<tr><th bgcolor="#eeeeff" align="right" valign="top"><strong>abstract:</strong></th>'
+          '<td bgcolor="#ffffff">%s&nbsp;<br></td></tr>' % doc.abstract)
+    if docutils.makeextralinks(doc.package):
+        print('<tr><th bgcolor="#eeeeff" align="right" valign="top"><strong>see also:</strong></th>'
+              '<td bgcolor="#ffffff">%s&nbsp;<br></td></tr>' % docutils.makeextralinks(doc.package))
+    print('</table><p>')
+    print('</td></tr>')
 
 print('''</table>
 </td></tr></table>
