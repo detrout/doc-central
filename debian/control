@@ -18,5 +18,6 @@ Depends: apache2 | httpd-cgi,
          ${misc:Depends}
 Recommends: w3m | www-browser
 Description: web-based documentation browser
- Doc-Central is a tool to browse the documentation installed on your
- system using their doc-base entries.
+ Doc-Central is a tool to browse the documentation that has been
+ installed on your system that have registered with the doc-base
+ subsystem.
