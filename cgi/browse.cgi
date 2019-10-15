@@ -41,7 +41,7 @@ print('''<DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <body bgcolor="#ffffff" text="#000000" link="#0000cc" vlink="#000066"
   alink="#ff0000">
 <h1>Index for section %s</h1>
-<base target="main">
+<base target="_blank">
 
 Below are the available documents matching your selection. If a document is
 available in multiple formats you will see a list for formats next to the
