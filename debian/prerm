@@ -1,4 +1,6 @@
-#!/bin/sh -e
+#!/bin/sh
+
+set -e
 
 if [ -L /usr/doc/$pkg ]; then
     rm -f /usr/doc/$pkg
