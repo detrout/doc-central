@@ -3,7 +3,7 @@
 hostname="$DC_HOST"
 
 if [ -z "$hostname" ]; then
-    hostname="`hostname -f`"
+    hostname="localhost"
 fi
 
 if [ -n "$1" ]; then
