@@ -1,10 +1,16 @@
-Copyright 2000 Wichert Akkerman <wakkerma@debian.org>
-Copyright 2004-2005 Guilherme de S. Pastore <guilherme.pastore@terra.com.br>
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 
-This package is free software; you may redistribute it and/or modify it
-under the terms of the GNU General Public License as published by the
-Free Software Foundation; either version 2, or (at your option) any
-later version.
+Files: *
+Copyright: 2000 Wichert Akkerman <wakkerma@debian.org>
+           2004-2005 Guilherme de S. Pastore <guilherme.pastore@terra.com.br>
+           2019 Diane Trout <diane@ghic.org>
+License: GPL-2+
 
-On Debian systems you can find the text of the GNU General Public License
-in /usr/share/common-licenses/GPL.
+License: GPL-2+
+ This package is free software; you may redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation; either version 2, or (at your option)
+ any later version.
+ .
+ On Debian systems you can find the text of the GNU General Public
+ License in /usr/share/common-licenses/GPL-2.
