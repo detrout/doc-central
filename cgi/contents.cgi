@@ -51,14 +51,14 @@ print('''<DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <body bgcolor="#ffffff" text="#000000" link="#0000cc" vlink="#000066"
   alink="#ff0000"><base target="main">
 <a href="/dc/main.html">Home</a>
+<form action="%s">
+<input type="text" name="keyword" autofocus>
+<input type="submit" value="search">
+</form>
+
 ''')
 
 showsection("")
 
 print("""
-<form action="%s">
-<input type="text" name="keyword">
-<input type="submit" value="search">
-</form>
-
 </body></html>""" % docutils.scriptname("search.cgi"))
